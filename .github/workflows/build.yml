@@ -1,0 +1,12 @@
+name: Build
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: unzip -q SFA-custom.zip && bash sfa/ci/build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: KeyVPN-apk
+          path: sfa/app/build/outputs/apk/**/*.apk
