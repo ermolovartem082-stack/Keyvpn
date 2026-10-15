@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: android-actions/setup-android@v3
       - run: unzip -q "$(ls *.zip | head -1)" && bash sfa/ci/build.sh
       - uses: actions/upload-artifact@v4
         with:
